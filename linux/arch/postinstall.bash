@@ -35,7 +35,6 @@ if [ $boot == "g" ]; then
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
     grub-mkconfig -o /boot/grub/grub.cfg
 else
-    bootctl --path=/boot install
     mkdir -p /boot/loader/entries
     echo "title ArchLinux" > /boot/loader/entries/arch.conf
     echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
