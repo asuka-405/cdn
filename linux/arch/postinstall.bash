@@ -27,8 +27,21 @@ echo "Defaults rootpw" >> /etc/sudoers
 echo "Defaults !tty_tickets" >> /etc/sudoers
 
 bootctl --path=/boot install
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
+
+reaad "grub or direct boot? (grub is better for dual boot) [g/d]: " boot
+
+if [ $boot == "g" ]; then
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+    grub-mkconfig -o /boot/grub/grub.cfg
+else
+    bootctl --path=/boot install
+    mkdir -p /boot/loader/entries
+    echo "title ArchLinux" > /boot/loader/entries/arch.conf
+    echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
+    echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
+    echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sda2) rw" >> /boot/loader/entries/arch.conf
+fi
+
 
 
 echo "KEYMAP=us" > /etc/vconsole.conf
