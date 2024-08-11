@@ -39,7 +39,8 @@ else
     echo "title ArchLinux" > /boot/loader/entries/arch.conf
     echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
     echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
-    echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sda2) rw" >> /boot/loader/entries/arch.conf
+    read -p "enter root partition name (/dev/something) (use lsblk to findout) (just enter part after /dev/)" partname
+    echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/$partname) rw" >> /boot/loader/entries/arch.conf
 fi
 
 
