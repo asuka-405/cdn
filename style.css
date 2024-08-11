@@ -1,0 +1,57 @@
+:root {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  transition: all 500ms ease-in-out;
+  background-color: #202020;
+  color: whitesmoke;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+h1 {
+  text-align: left;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list a {
+  text-decoration: none;
+  display: block;
+  border-radius: 5px;
+  border: 2px solid coral;
+  padding: 1.5em 1em;
+  font-size: 1.25rem;
+  color: whitesmoke;
+}
+
+.list a:hover {
+  transform: scale(1.01);
+}
+
+#file-display {
+  max-width: 800px;
+  max-height: 80vh;
+  border: 2px solid coral;
+  border-radius: 5px;
+  color: whitesmoke;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: auto;
+  margin: 0 auto;
+}
+
+span {
+  padding: 0.25em 0.5em;
+  border-radius: 5px;
+  background-color: rgba(80, 80, 80, 0.5);
+  cursor: pointer;
+}

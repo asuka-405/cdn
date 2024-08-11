@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <meta name="darkreader-lock" />
+    <title>ArchLinux PostInstall</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Content preview & Download</h1>
+        Download:<a href="/linux/arch/postinstall.bash"> 📥 </a>
+        <p>
+          CDN link:
+          <span class="copy-on-click"
+            >https://cdn.ksuryansh.xyz/linux/arch/postinstall.bash</span
+          >
+        </p>
+      </header>
+      <div id="file-display"></div>
+    </main>
+    <script type="module">
+      const fileDisplay = document.querySelector("#file-display")
+      const bashfile = await fetch("/linux/arch/postinstall.bash")
+        .then((res) => res.text())
+        .catch((err) => {
+          console.error(err)
+          return "echo 'Error: Could not fetch file'"
+        })
+      fileDisplay.innerHTML = `<pre>${bashfile}</pre>`
+
+      document.querySelectorAll(".copy-on-click").forEach((el) => {
+        el.addEventListener("click", () => {
+          navigator.clipboard.writeText(el.innerText)
+          el.innerText = "Copied!"
+          setTimeout(() => {
+            el.innerText =
+              "https://cdn.ksuryansh.xyz/linux/arch/postinstall.bash"
+          }, 1000)
+        })
+      })
+    </script>
+  </body>
+</html>
