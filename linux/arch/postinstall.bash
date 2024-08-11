@@ -28,7 +28,7 @@ echo "Defaults !tty_tickets" >> /etc/sudoers
 
 bootctl --path=/boot install
 
-read "grub or direct boot? (grub is better for dual boot) [g/d]: " boot
+read -p "grub or direct boot? (grub is better for dual boot) [g/d]: " boot
 
 if [ $boot == "g" ]; then
     pacman -S grub efibootmgr os-prober --noconfirm
